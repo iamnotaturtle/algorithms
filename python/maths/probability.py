@@ -34,3 +34,20 @@ print(rnd.getRandomFromStream([1, 2, 3, 4, 5]))
 stream = [6, 7, 8, 9, 10]
 for i in range(len(stream)):
     print(rnd.getRandom(stream[i]))
+
+# Given a function that generates perfectly random numbers between 1 and k (inclusive), where k is an input, write a function that shuffles a deck of cards represented as an array using only swaps.
+CARDS = 52
+def getRand(k):
+    return random.randint(0, k)
+
+def shuffle():
+    cards = [i for i in range(CARDS)]
+
+    for oldPos in cards:
+        newPos = oldPos + getRand(CARDS - oldPos - 1)
+        cards[newPos], cards[oldPos] = cards[oldPos], cards[newPos]
+    
+    return cards
+
+print(shuffle())
+
